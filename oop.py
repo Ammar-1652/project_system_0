@@ -207,3 +207,6 @@ class Courses():
         self.is_with_lab=is_with_lab
         Courses.courses_num+=1
         Courses.labs_num+=self.is_with_lab
+
+
+
