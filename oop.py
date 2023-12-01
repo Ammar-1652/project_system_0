@@ -103,14 +103,40 @@ class Person():
 
 
 class Student(Person):
+    is_admin=False
     Student_count=0
+
     def __init__(self):
         Student.Student_count+=1
+        self.courses_enrolled=set()
+        self.current_hours=0
+        self.max_hours=18
         
+        
+        
+    
     
 #==================setters & getters=======================
     def assign_values(self):
         return super().assign_values()
+    
+#===================coursed enrolled========================
+    def enroll_in_course(self,course):
+        if self.current_hours+course.get_course_hours()<=self.max_hours:
+            self.courses_enrolled.add(course) # here we are storing courses as the whole object so we can use its attributes & methods
+            
+        #add student who enrolled the course in course set 
+            for course_name in self.courses_enrolled:
+                if course_name.get_course_name().lower()==course.get_course_name().lower():
+                    course.student_enrolled_course.add(self)
+                else:
+                    pass
+        
+        else:
+            print("More than maximum hours")
+    
+    def get_enrolled_courses(self):
+        return self.courses_enrolled
 #======================level===================================
     def set_level(self,level):
         self.level=level
@@ -130,6 +156,8 @@ class Student(Person):
 #=======================end of Student class=====================
 
 class Instructor(Person):
+    is_admin=False
+    
     def __init__(self):
         pass
         
@@ -162,6 +190,7 @@ class Admin(Person):
         
 class Professor(Instructor):
     professor_count=0
+    
     def __init__(self):
         Professor.professor_count+=1
         
@@ -192,21 +221,55 @@ class Professor_asst(Instructor):
         
         
         
-        
-        
-        
-        
 
 class Courses():
     courses_num=0
     labs_num=0
-    def __init__(self,course_name,course_hours,is_with_lab=False):
-        #assign values
+    def __init__(self):
+        Courses.courses_num+=1
+        
+#=======================setters & getters===================
+    def add_new_course(self,course_name,course_hours,is_with_lab):
+        #here will be a check sentence for is_admin
         self.course_name=course_name
         self.course_hours=course_hours
         self.is_with_lab=is_with_lab
-        Courses.courses_num+=1
-        Courses.labs_num+=self.is_with_lab
+        Courses.labs_num+=int(self.is_with_lab)
+        self.student_enrolled_course=set()
+    
+    def get_course_name(self):
+        return self.course_name
+    
+    def get_course_hours(self):
+        return self.course_hours
+    
+    def get_course_lab(self):
+        return self.is_with_lab
+#======================================================================
+    def students_enrolled_course(self,student):
+        for course in student.courses_enrolled:
+            if course.lower()==self.get_course_name().lower():
+                self.student_enrolled_course.add(student)
+            else:
+                pass
+        
+    def get_students_enrolled_course(self):
+        return self.student_enrolled_course
 
 
+student=Student()
+student2=Student()
+course1=Courses()
+course2=Courses()
+course3=Courses()
 
+student.set_first_name("Ammar")
+student2.set_first_name("Ahmed")
+course1.add_new_course("Math",17,False)
+course2.add_new_course("programming",3,True)
+course3.add_new_course("Arabic",1,False)
+
+student.enroll_in_course(course1)
+student.enroll_in_course(course3)
+print(student.get_enrolled_courses())
+print(course1.get_students_enrolled_course())
