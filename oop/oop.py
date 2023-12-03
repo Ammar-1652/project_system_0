@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 class Person():
     def __init__(self):
-        pass
+        self.role=None
         
     def assign_values(self):
         self.first_name=self.get_first_name()
@@ -85,6 +85,9 @@ class Person():
     def get_date_of_birth(self):
         return self.date_of_birth
     #======================================
+
+    def get_role(self):
+        return self.role
     
     #===========ID====================
     def get_id(self):
@@ -112,6 +115,7 @@ class Student(Person):
         self.courses_enrolled=set()
         self.current_hours=0
         self.max_hours=18
+        self.role="student"
         
         
         
@@ -183,7 +187,7 @@ class Admin(Person):
     
     def __init__(self):
         Admin.profile_approved=True
-        
+        self.role="admin"
 #=============setters & getters=================
     def assign_values(self):
         return super().assign_values()
@@ -195,6 +199,7 @@ class Professor(Instructor):
     def __init__(self):
         Professor.professor_count+=1
         self.courses_teaching=set()
+        self.role="professor"
         
 #===============setters and getters========================
     def assign_values(self):
@@ -211,6 +216,7 @@ class Professor_asst(Instructor):
     def __init__(self):
         Professor_asst.professor_asst_count+=1
         self.labs_giving=set()
+        self.role="assistant"
         
     #===============setters and getters========================
     def assign_values(self):
