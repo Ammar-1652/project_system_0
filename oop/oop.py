@@ -292,33 +292,4 @@ class Courses():
     
     def get_assistant_giving_lab(self):
         return self.assistant_giving_lab
-student=Student()
-student2=Student()
-course1=Courses()
-course2=Courses()
-course3=Courses()
 
-# student.set_first_name("Ammar")
-# student2.set_first_name("Ahmed")
-course1.add_new_course("Math",17,False)
-course2.add_new_course("programming",3,True)
-course3.add_new_course("Arabic",1,False)
-
-student.enroll_in_course(course1)
-student.enroll_in_course(course3)
-
-
-
-
-prof=Professor()
-prof2=Professor()
-
-course1.set_professor_teaching_course(prof)
-course2.set_professor_teaching_course(prof)
-course3.set_professor_teaching_course(prof2)
-course2.set_professor_teaching_course(prof2)
-
-print(prof.get_courses_teaching())
-print(prof2.get_courses_teaching())
-print(course1.get_professor_teaching_course())
-print(course2.get_professor_teaching_course())
