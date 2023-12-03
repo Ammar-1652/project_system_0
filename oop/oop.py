@@ -92,7 +92,7 @@ class Person():
     #============age=====================
     def calc_age(self):
         today = datetime.now()
-        birthdate= datetime.strptime(str(self.get_date_of_birth()), '%d/%m/%Y')
+        birthdate= datetime.strptime(str(self.get_date_of_birth()), '%m/%d/%Y') #the format will be based on html form
         age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
         return age
     
