@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
+from oop import Student
 
 app = Flask(__name__)
 
@@ -31,22 +32,22 @@ create_table()
 
 @app.route('/')
 def index():
-    return render_template('sign_up.html')
+    return render_template('sign_up_for_students.html')
 
-@app.route('/sign_up', methods=['GET', 'POST'])
-def sign_up():
+@app.route('/sign_up_for_students', methods=['GET', 'POST'])
+def sign_up_for_students():
     if request.method == 'POST':
-        # Retrieve form data
-        first_name = request.form['first-name']
-        middle_name = request.form['middle-name']
-        last_name = request.form['last-name']
-        contact_number = request.form['contact-number']
-        national_id = request.form['national-id']
-        email = request.form['email']
-        date_of_birth = request.form['date-of-birth']
-        gender = request.form['gender']
-        class_level = request.form['class_level']
-        profile_file = request.form['profile-file']
+        s = Student()  # Create a new instance of Student for each form submission
+        s.set_first_name(request.form['first-name'])
+        s.set_middle_name(request.form['middle-name'])
+        s.set_last_name(request.form['last-name'])
+        s.set_contact_num(request.form['contact-number'])
+        s.set_personal_id(request.form['national-id'])
+        s.set_email(request.form['email'])
+        s.set_date_of_birth(request.form['date-of-birth'])
+        s.set_gender(request.form['gender'])
+        s.set_level(request.form['class_level'])
+        s.set_profile_file(request.form['profile-file'])
 
         # Insert data into the database
         conn = sqlite3.connect(DATABASE)
@@ -57,21 +58,12 @@ def sign_up():
                 email, date_of_birth, gender, class_level, profile_file
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
-            first_name, middle_name, last_name, contact_number, national_id,
-            email, date_of_birth, gender, class_level, profile_file
+            s.get_first_name(), s.get_middle_name(), s.get_last_name(),
+            s.get_contact_num(), s.get_personal_id(), s.get_email(),
+            s.get_date_of_birth(), s.get_gender(), s.get_level(), s.get_profile_file()
         ))
         conn.commit()
         conn.close()
-
-        return redirect(url_for('index'))
-
-    return render_template('sign_up.html')
-
-@app.route('/sign_up_for_students', methods=['GET', 'POST'])
-def sign_up_for_students():
-    if request.method == 'POST':
-        # Retrieve and process form data (similar to the sign_up route)
-        # ...
 
         return redirect(url_for('index'))
 
