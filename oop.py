@@ -1,8 +1,11 @@
+#oop.py file
+
 from abc import ABC, abstractmethod
 from datetime import datetime
 class Person():
     def __init__(self):
         self.role=None
+        self.profile_approved=False
         
     def assign_values(self):
         self.first_name=self.get_first_name()
@@ -18,11 +21,11 @@ class Person():
         self.profile_id=self.get_id()
         self.role=self.get_role()
     
-    def generate_id(self):
-        pass
+    # def generate_id(self):
+    #     pass
     
-    def view_profile():
-        pass
+    # def view_profile():
+    #     pass
     
     #==========setters & getters=========
     def get_role(self):
@@ -110,14 +113,17 @@ class Person():
 
 class Student(Person):
     is_admin=False
-    Student_count=0
+    student_count=0
 
     def __init__(self):
-        Student.Student_count+=1
+        super().__init__()
+        Student.student_count+=1
         self.courses_enrolled=set()
+        self.labs_taking=set()
         self.current_hours=0
         self.max_hours=18
         self.role="student"
+        self.profile_id=Student.student_count
         
         
         
@@ -133,12 +139,20 @@ class Student(Person):
 #===================coursed enrolled========================
     def enroll_in_course(self,course):
         if self.current_hours+course.get_course_hours()<=self.max_hours:
-            self.courses_enrolled.add(course) # here we are storing courses as the whole object so we can use its attributes & methods
-            
+            self.courses_enrolled.add(course.get_course_id()) # here we are storing courses as the whole object so we can use its attributes & methods
+            self.current_hours+=course.get_course_hours()
+            if course.is_with_lab:
+                self.labs_taking.add(course.get_lab_id())
+            professor=course.get_professor_teaching_course()
+            assistant=course.get_assistant_giving_lab()
         #add student who enrolled the course in course set 
-            for course_name in self.courses_enrolled:
-                if course_name.get_course_name().lower()==course.get_course_name().lower():
+            for enrolled_course in self.courses_enrolled:
+                if enrolled_course==course.get_course_id():
                     course.student_enrolled_course.add(self)
+                    professor.get_all_students_teaching().setdefault(course.get_course_id(), set()).add(self)
+                    if course.is_with_lab:
+                        assistant.get_all_students_teaching().setdefault(course.get_lab_id(), set()).add(self)
+                        
                 else:
                     pass
         
@@ -169,7 +183,7 @@ class Instructor(Person):
     is_admin=False
     
     def __init__(self):
-        pass
+        super().__init__()
         
 #==================setters & getters=======================
     def assign_values(self):
@@ -198,13 +212,18 @@ class Admin(Person):
         return super().assign_values()
         
         
+        
+        
 class Professor(Instructor):
     professor_count=0
     
     def __init__(self):
+        super().__init__()
         Professor.professor_count+=1
         self.courses_teaching=set()
+        self.students_teaching={}
         self.role="professor"
+        self.profile_id=Professor.professor_count
         
 #===============setters and getters========================
     def assign_values(self):
@@ -212,16 +231,31 @@ class Professor(Instructor):
 #================courses teaching=======================
     def add_courses_teaching(self,course):
         self.courses_teaching.add(course)
+        self.students_teaching[course]=set(course.get_students_enrolled_course())
     
     def get_courses_teaching(self):
         return self.courses_teaching
+    
+#====================Students he is teaching======================
+    def get_all_students_teaching(self): #returns full dictionary of all students
+        return self.students_teaching
+
+    
+    
+    def get_students_teaching(self,course): #returns students of only one course
+        return self.students_teaching[course]
         
+
+
 class Professor_asst(Instructor):
     professor_asst_count=0
     def __init__(self):
+        super().__init__()
         Professor_asst.professor_asst_count+=1
         self.labs_giving=set()
+        self.students_teaching={}
         self.role="assistant"
+        self.profile_id=Professor_asst.professor_asst_count
         
     #===============setters and getters========================
     def assign_values(self):
@@ -229,10 +263,17 @@ class Professor_asst(Instructor):
 #================labs teaching=======================
     def add_labs_giving(self,lab):
         self.labs_giving.add(lab)
+        self.students_teaching[lab]=set(lab.get_students_enrolled_course())
     
     def get_labs_giving(self):
         return self.labs_giving
+    
+#=========================students he is giving labs=================
+    def get_all_students_teaching(self): #returns full dictionary of all students
+        return self.students_teaching
         
+    def get_students_teaching(self,lab): #returns students of only one lab
+        return self.students_teaching[lab]
         
         
 
@@ -244,15 +285,33 @@ class Courses():
         self.professor_teaching_course=None
         self.assistant_giving_lab=None
         self.student_enrolled_course=set()
+        
+#assign unique id for course and its lab
         self.course_id=Courses.courses_num
+        self.lab_id=Courses.courses_num
+        
+        
         
 #=======================setters & getters===================
+
+    def get_course_id(self):
+        return self.course_id
+    
+    
+    def get_lab_id(self):
+        return self.lab_id
+
+
+
+
+#===========================================================
     def add_new_course(self,course_name,course_hours,is_with_lab):
         #here will be a check sentence for is_admin
         self.course_name=course_name
         self.course_hours=course_hours
         self.is_with_lab=is_with_lab
         Courses.labs_num+=int(self.is_with_lab)
+        
         
     
     def get_course_name(self):
@@ -281,6 +340,7 @@ class Courses():
             professor.add_courses_teaching(self)
         else:
             self.professor_teaching_course.get_courses_teaching().remove(self)
+            self.professor_teaching_course.get_students_teaching().pop(self)
             self.professor_teaching_course=professor
             professor.add_courses_teaching(self)
 
@@ -303,4 +363,5 @@ class Courses():
     
     def get_assistant_giving_lab(self):
         return self.assistant_giving_lab
+
 
