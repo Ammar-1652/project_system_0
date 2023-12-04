@@ -16,6 +16,7 @@ class Person():
         self.profile_approved=self.get_profile_approved()
         self.age=self.get_age()
         self.profile_id=self.get_id()
+        self.role=self.get_role()
     
     def generate_id(self):
         pass
