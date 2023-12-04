@@ -10,7 +10,7 @@
     />
     <!-- CSS File -->
     <link rel="stylesheet" href="css/master.css" />
-    <link rel="stylesheet" href="css/sign_up_for_students.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
     <!-- Normalize File -->
     <link rel="stylesheet" href="css/normalize.css" />
     <!-- Tab Icon -->
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign up for Students</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -37,104 +37,86 @@
     </nav>
     <!-- End Navbar -->
 
-    <!-- Start Sign Up for Students -->
-    <div class="big-sign-up-container">
-      <div class="signup-container">
-        <i class="fa-solid fa-user-graduate"></i>
-        <h2>Sign Up for Students</h2>
-        <form action="{{url_for('sign_up_for_students')}}" method="post" enctype="multipart/form-data">
-          
-          <div class="columns">
-            <div class="column">
-              <input
-                type="text"
-                name="first-name"
-                placeholder="First Name"
-                required
-              /><br />
-              <input
-                type="text"
-                name="last-name"
-                placeholder="Last Name"
-                required
-              /><br />
-              <input
-                type="tel"
-                name="contact-number"
-                placeholder="Contact Number"
-                maxlength="11"
-                minlength="11"
-                required
-              /><br />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                required
-              /><br />
-              <select name="class_level" required>
-                <option value="" disabled selected>Select Class Level</option>
-                <option value="Level 1">Level 1</option>
-                <option value="Level 2">Level 2</option>
-                <option value="Level 3">Level 3</option>
-                <option value="Level 4">Level 4</option></select
-              ><br />
-            </div>
-            <div class="column">
-              <input
-                type="text"
-                name="middle-name"
-                placeholder="Middle Name"
-                required
-              /><br />
-              <input
-                type="tel"
-                name="national-id"
-                placeholder="National ID"
-                maxlength="14"
-                minlength="14"
-                required
-              /><br />
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                required
-              /><br />
-              <input
-                type="date"
-                name="date-of-birth"
-                placeholder="Date of Birth"
-                required
-              /><br />
-              <select name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option></select
-              ><br />
-            </div>
-            <!-- <form action="#" method="post" enctype="multipart/form-data"></form>
-            <div class="upload-file">
-              <label for="profile-picture">Upload Your File</label>
-              <input
-                type="file"
-                name="profile-file"
-                id="profile-file"
-                accept=""
-              />
-              <small>Please, Upload Your profile (PDF)</small>
-            </div>
-<<<<<<< HEAD
-          </div> -->
-=======
+    <!-- Start Dashboard -->
+
+    <!-- Start First Column -->
+
+    <div class="big-container">
+      <div class="first-column-container">
+        <div class="info-container">
+          <div class="student-info">
+            <a href="">
+              <i class="fa-solid fa-user-graduate"></i>
+              <p>student information</p>
+            </a>
           </div>
-          <a href="log_in.html">Or You Are Already Have Account</a>
->>>>>>> 01c4a63eaf7276403aad85219d0b79ec52caa6c4
-          <input type="submit" value="Sign Up" />
-        </form>
+          <div class="professor-info">
+            <a href="">
+              <i class="fa-solid fa-user-tie"></i>
+              <p>professors information</p>
+            </a>
+          </div>
+          <div class="assistant-profs-info">
+            <a href="">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <p>ass. professors information</p>
+            </a>
+          </div>
+          <div class="courses-info">
+            <a href="">
+              <i class="fa-solid fa-book"></i>
+              <p>courses information</p>
+            </a>
+          </div>
+          <div class="accounts-info">
+            <a href="">
+              <i class="fa-solid fa-chart-pie"></i>
+              <p>accounts information</p>
+            </a>
+          </div>
+          <div class="financial-info">
+            <a href="">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+              <p>financial information</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="edit-container">
+          <div class="setting-container">
+            <a href="">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings</p>
+            </a>
+          </div>
+          <div class="log-out-container">
+            <a href="">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>log out</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-container">
+        <input type="text" placeholder="🔍 Search..." class="search-input" />
+
+        <div class="header-end-container">
+          <i class="fa-solid fa-bell"></i>
+          <div class="profile-container">
+            <i class="fa-solid fa-user"></i>
+            <div class="acount-details">
+              <h6>Ammar Walid</h6>
+              <p>Admin</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- End Sign Up Students -->
+
+    <!-- End First Column -->
+
+    <!-- End Dashboard -->
 
     <!-- Start Footer -->
 
