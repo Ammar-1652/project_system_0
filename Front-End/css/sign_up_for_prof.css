@@ -140,7 +140,7 @@ input[type="tel"]:focus,
 input[type="date"]:focus,
 input[type="file"]:focus,
 select:focus {
-  outline: 1px var(--main-color) solid;
+  outline: 2px var(--main-color) solid;
 }
 
 input[type="submit"] {

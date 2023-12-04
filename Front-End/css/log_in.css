@@ -12,77 +12,19 @@ body {
   font-family: "Poppins", sans-serif;
   margin: 0;
   padding: 0;
-  background: url('./4.jpeg') center/cover no-repeat;
+  background-color: var(--fifth-color);
   height: 100vh;
 }
+/* Global Rules */
 
 /* Start Navbar */
-nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  background-color: var(--main-color);
-  min-height: 150px;
-}
-
-nav .logo img {
-  width: 120px;
-}
-
-nav .links {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 45%;
-}
-
-nav .links a {
-  position: relative;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.6);
-  font-weight: 600;
-  font-size: 20px;
-  padding: 0 5px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
 nav .links .log-in {
   color: var(--second-color);
-}
-
-nav .links a::before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 3px;
-  left: 0;
-  bottom: -2px;
-  background-color: var(--second-color);
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -ms-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
-nav .links a:hover {
-  color: var(--second-color);
-}
-
-nav .links a:hover::before {
-  width: 100%;
 }
 /* End Navbar */
 
 /* Start Log in */
+
 .big-log-in-container {
   margin: 50px 0;
   display: flex;
@@ -101,12 +43,11 @@ nav .links a:hover::before {
   flex-direction: column;
   align-items: center;
 }
-
 input[type="text"],
 input[type="password"],
 input[type="submit"] {
   width: calc(100% - 40px);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   padding: 12px;
   border-radius: 25px;
   border: 1px solid #ccc;
@@ -115,13 +56,11 @@ input[type="submit"] {
   font-size: 16px;
   outline: none;
 }
-
 input[type="text"]:focus,
 input[type="password"]:focus {
   border-color: var(--main-color);
   outline: solid 1px var(--main-color);
 }
-
 input[type="submit"] {
   width: calc(100% - 40px);
   background: var(--main-color);
@@ -136,17 +75,15 @@ input[type="submit"] {
   padding: 12px;
   outline: none;
 }
-
 input[type="submit"]:hover {
   background: var(--main-color);
 }
-
 input[type="submit"]:active {
   transform: scale(0.95);
 }
-
 .login-container h2 {
   text-align: center;
+  margin-top: 15px;
   margin-bottom: 30px;
   color: #333;
   font-size: 24px;
@@ -164,18 +101,25 @@ input[type="submit"]:active {
   align-items: center;
 }
 
+.big-log-in-container .login-container form .have-an-account {
+  margin-bottom: 20px;
+}
+
+.big-log-in-container .login-container form .have-an-account a {
+  color: var(--main-color);
+  font-size: 12px;
+}
+
 .login-container form .remember-me {
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .login-container form label {
   color: var(--second-color);
-}
-
-img {
-  width: 150px;
-  border-radius: 50%;
-  margin-bottom: 20px;
+  font-size: 16px;
+  padding-left: 5px;
 }
 
 @keyframes fadeIn {
@@ -188,35 +132,5 @@ img {
     transform: translateY(0);
   }
 }
+
 /* End Log in */
-
-/* Start Footer */
-.footer-container {
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
-  background-color: var(--forth-color);
-}
-
-.footer-container .sub-container {
-  background-color: rgba(0, 0, 0, 0.2);
-}
-
-.footer-container .sub-container p {
-  color: var(--sixth-color);
-  font-size: 15px;
-  text-align: center;
-  padding: 50px;
-}
-
-.footer-container .sub-container p span {
-  color: var(--main-color);
-  font-weight: bold;
-}
-
-.footer-container .sub-container p span a {
-  color: var(--main-color);
-  font-weight: bold;
-  text-decoration: none;
-}
-/* End Footer */

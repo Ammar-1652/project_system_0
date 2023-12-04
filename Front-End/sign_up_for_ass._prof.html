@@ -10,7 +10,7 @@
     />
     <!-- CSS File -->
     <link rel="stylesheet" href="css/master.css" />
-    <link rel="stylesheet" href="css/sign_up_for_students.css" />
+    <link rel="stylesheet" href="css/sign_up_for_ass._prof.css" />
     <!-- Normalize File -->
     <link rel="stylesheet" href="css/normalize.css" />
     <!-- Tab Icon -->
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign up for Students</title>
+    <title>Sign Up For Assistants Professors</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -37,11 +37,11 @@
     </nav>
     <!-- End Navbar -->
 
-    <!-- Start Sign Up for Students -->
+    <!-- Start Sign Up for Profs -->
     <div class="big-sign-up-container">
       <div class="signup-container">
-        <i class="fa-solid fa-user-graduate"></i>
-        <h2>Sign Up for Students</h2>
+        <i class="fa-solid fa-chalkboard-user"></i>
+        <h2>Sign Up for Assistant Professors</h2>
         <form action="#" method="post">
           <div class="columns">
             <div class="column">
@@ -71,12 +71,17 @@
                 placeholder="Password"
                 required
               /><br />
-              <select name="class_level" required>
+              <!-- <select name="class_level" required>
                 <option value="" disabled selected>Select Class Level</option>
                 <option value="Level 1">Level 1</option>
                 <option value="Level 2">Level 2</option>
                 <option value="Level 3">Level 3</option>
                 <option value="Level 4">Level 4</option></select
+              ><br /> -->
+              <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option></select
               ><br />
             </div>
             <div class="column">
@@ -106,11 +111,6 @@
                 placeholder="Date of Birth"
                 required
               /><br />
-              <select name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option></select
-              ><br />
             </div>
             <div class="upload-file">
               <label for="profile-picture">Upload Your File</label>
@@ -128,7 +128,7 @@
         </form>
       </div>
     </div>
-    <!-- End Sign Up Students -->
+    <!-- End Sign Up for Profs -->
 
     <!-- Start Footer -->
 
