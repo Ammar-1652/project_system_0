@@ -24,7 +24,8 @@ class Person():
         pass
     
     #==========setters & getters=========
-    
+    def get_role(self):
+        return self.role
     #===========f-name===========
     def set_first_name(self,f_name):
         self.first_name=f_name
@@ -124,6 +125,9 @@ class Student(Person):
 #==================setters & getters=======================
     def assign_values(self):
         return super().assign_values()
+    
+#==========================================================
+    
     
 #===================coursed enrolled========================
     def enroll_in_course(self,course):
