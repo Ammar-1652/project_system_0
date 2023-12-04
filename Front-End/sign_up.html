@@ -10,7 +10,7 @@
     />
     <!-- CSS File -->
     <link rel="stylesheet" href="css/master.css" />
-    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/sign_up.css" />
     <!-- Normalize File -->
     <link rel="stylesheet" href="css/normalize.css" />
     <!-- Tab Icon -->
@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
+    <title>Sign Up</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -37,56 +37,43 @@
     </nav>
     <!-- End Navbar -->
 
-    <!-- Start Body -->
+    <!-- Start Sign Up -->
 
-    <div class="main-container">
-      <h1>Contact Us</h1>
-      <p>We're open for any suggestion or just to have a chat</p>
-      <div class="subcontainer">
-        <div class="first-subcontainer">
-          <div class="first-column">
-            <p>
-              <span>MY ADDRESS:</span>
-              El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.
-            </p>
+    <div class="big-container">
+      <div class="container">
+        <h2>Please Select Type of Sign Up</h2>
+        <div class="signup-container">
+          <div class="prof-container">
+            <a href="sign_up_for_prof.html">
+              <button class="prof">
+                <i class="fa-solid fa-user-tie"></i>
+                <h6>Professor</h6>
+              </button>
+            </a>
           </div>
-          <div class="second-column">
-            <p>
-              <span>MY EMAIL:</span>
-              fci@fci.kfs.edu.eg
-            </p>
+          <div class="assoc-prof-container">
+            <a href="sign_up_for_ass._prof.html">
+              <button class="assoc-prof">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <h6>Prof. Assistant</h6>
+              </button>
+            </a>
           </div>
-          <div class="third-column">
-            <p>
-              <span>MY PHONE:</span>
-              (+20) 1096554062
-            </p>
+          <div class="student-container">
+            <a href="sign_up_for_students.html">
+              <button class="student">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h6>Student</h6>
+              </button>
+            </a>
           </div>
+          <br />
         </div>
-      </div>
-      <div class="second-subcontainer">
-        <form action="">
-          <input type="text" placeholder="Name" required class="main-input" />
-          <input type="email" placeholder="Email" required class="main-input" />
-          <input
-            type="text"
-            placeholder="Subject"
-            required
-            class="main-input"
-          />
-          <textarea
-            class="main-input"
-            name="message"
-            id=""
-            placeholder="Create a message here"
-            required
-          ></textarea>
-          <input type="submit" value="send message" class="sumbit-button" />
-        </form>
+        <a href="log_in.html">Or You Are Already Have Account</a>
       </div>
     </div>
 
-    <!-- End Body -->
+    <!-- End Sign Up -->
 
     <!-- Start Footer -->
 
@@ -151,5 +138,6 @@
         </p>
       </div>
     </div>
+    <!-- End Footer -->
   </body>
 </html>
