@@ -6,7 +6,7 @@ class Person():
     def __init__(self):
         self.role=None
         self.profile_approved=False
-        
+        self.is_admin=False
     def assign_values(self):
         self.first_name=self.get_first_name()
         self.middle_name=self.get_middle_name()
@@ -28,6 +28,9 @@ class Person():
     #     pass
     
     #==========setters & getters=========
+    def get_is_admin(self):
+        return self.is_admin
+    #==================================
     def get_role(self):
         return self.role
     #===========f-name===========
@@ -90,9 +93,6 @@ class Person():
     def get_date_of_birth(self):
         return self.date_of_birth
     #======================================
-
-    def get_role(self):
-        return self.role
     
     #===========ID====================
     def get_id(self):
@@ -112,7 +112,6 @@ class Person():
 
 
 class Student(Person):
-    is_admin=False
     student_count=0
 
     def __init__(self):
@@ -124,6 +123,10 @@ class Student(Person):
         self.max_hours=18
         self.role="student"
         self.profile_id=Student.student_count
+        self.is_admin=False
+        self.profile_approved=False
+        
+
         
         
         
@@ -184,6 +187,8 @@ class Instructor(Person):
     
     def __init__(self):
         super().__init__()
+        self.is_admin=False
+        self.profile_approved=False
         
 #==================setters & getters=======================
     def assign_values(self):
@@ -205,6 +210,7 @@ class Instructor(Person):
 class Admin(Person):
     
     def __init__(self):
+        self.is_admin=True
         Admin.profile_approved=True
         self.role="admin"
 #=============setters & getters=================

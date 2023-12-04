@@ -15,6 +15,7 @@ professor2=Professor()
 professor_asst = Professor_asst()
 professor_asst2 = Professor_asst()
 
+admin=Admin()
 
 course1 = Courses()
 course2 = Courses()
@@ -161,5 +162,22 @@ student4.enroll_in_course(course1)
 student4.enroll_in_course(course4) 
 
 
-print(student.get_enrolled_courses())
-print(professor.get_students_teaching(1))
+# print(student.get_enrolled_courses())
+# print(professor.get_students_teaching(1))
+
+print(student.get_is_admin())
+print(student.get_role())
+print(student.get_profile_approved())
+print("=========================================")
+print(professor.get_is_admin())
+print(professor.get_role())
+print(professor.get_profile_approved())
+print("=========================================")
+print(professor_asst.get_is_admin())
+print(professor_asst.get_role())
+print(professor_asst.get_profile_approved())
+print("=========================================")
+print(admin.get_is_admin())
+print(admin.get_role())
+print(admin.get_profile_approved())
+
