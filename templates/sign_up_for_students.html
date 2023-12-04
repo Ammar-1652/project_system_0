@@ -51,7 +51,8 @@
       <div class="signup-container">
         <i class="fa-solid fa-user-graduate"></i>
         <h2>Sign Up for Students</h2>
-        <form action="#" method="post">
+        <form action="{{url_for('sign_up_for_students')}}" method="post" enctype="multipart/form-data">
+          
           <div class="columns">
             <div class="column">
               <input
@@ -121,6 +122,7 @@
                 <option value="Female">Female</option></select
               ><br />
             </div>
+            <!-- <form action="#" method="post" enctype="multipart/form-data"></form>
             <div class="upload-file">
               <label for="profile-picture">Upload Your File</label>
               <input
@@ -131,7 +133,7 @@
               />
               <small>Please, Upload Your profile (PDF)</small>
             </div>
-          </div>
+          </div> -->
           <input type="submit" value="Sign Up" />
         </form>
       </div>
