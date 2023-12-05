@@ -180,6 +180,8 @@ class Student(Person):
 
     def get_department(self):
         return self.department
+
+
 #=======================end of Student class=====================
 
 class Instructor(Person):
