@@ -1,5 +1,5 @@
 # app.py
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request,redirect
 import sqlite3
 from oop import Student, Professor,Professor_asst  # Assuming you have a class Professor in oop module
 
@@ -92,6 +92,8 @@ create_table3()
 create_table_courses()
 
 
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -108,9 +110,55 @@ def contact():
 
 
 @app.route("/log_in")
+# ... (previous code)
+
+# ... (previous code)
+
+@app.route("/log_in", methods=['GET', 'POST'])
 def log_in():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+
+        # Check if the user exists in the students table
+        connection = sqlite3.connect(DATABASE)
+        cursor = connection.cursor()
+        cursor.execute('SELECT * FROM students WHERE email=? AND password=?', (email, password))
+        student = cursor.fetchone()
+        connection.close()
+
+        # If not found in students table, check professors table
+        if not student:
+            connection = sqlite3.connect(DATABASE)
+            cursor = connection.cursor()
+            cursor.execute('SELECT * FROM profs WHERE email=? AND password=?', (email, password))
+            professor = cursor.fetchone()
+            connection.close()
+
+            # If not found in professors table, check assistant table
+            if not professor:
+                connection = sqlite3.connect(DATABASE)
+                cursor = connection.cursor()
+                cursor.execute('SELECT * FROM assistant WHERE email=? AND password=?', (email, password))
+                assistant = cursor.fetchone()
+                connection.close()
+
+                # If not found in any table, invalid login
+                if not assistant:
+                    return "Invalid email or password"
+
+                # Return welcome message for assistant
+                return "Welcome assistant "
+            else:
+                # Return welcome message for professor
+                return "Welcome professor "
+        else:
+            # Return welcome message for student
+            return "Welcome student "
+
     return render_template("log_in.html")
 
+# ... (remaining code)
 
 @app.route("/sign_up")
 def sign_up():
