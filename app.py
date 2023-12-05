@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import sqlite3
-<<<<<<< HEAD
 from oop import Student 
 
-=======
 import sys
 from oop import *
->>>>>>> 01c4a63eaf7276403aad85219d0b79ec52caa6c4
+
 app = Flask(__name__)
 app.secret_key=['password']
 # Set up SQLite database
