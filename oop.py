@@ -1,6 +1,5 @@
 #oop.py file
 
-from abc import ABC, abstractmethod
 from datetime import datetime
 class Person():
     used_ids = set()
@@ -195,7 +194,6 @@ class Student(Person):
 #=======================end of Student class=====================
 
 class Instructor(Person):
-    is_admin=False
     
     def __init__(self):
         super().__init__()
@@ -219,20 +217,7 @@ class Instructor(Person):
     def get_salary(self):
         return self.salary
 #===================end of class Instructor============
-class Admin(Person):
-    
-    def __init__(self):
-        super().__init__()
-        self.is_admin=True
-        Admin.profile_approved=True
-        self.role="admin"
-#=============setters & getters=================
-    def assign_values(self):
-        return super().assign_values()
-        
-        
-        
-        
+
 class Professor(Instructor):
     professor_count=0
     
@@ -293,7 +278,21 @@ class Professor_asst(Instructor):
         return self.students_teaching[lab]
         
         
-
+class Admin(Person):
+    
+    def __init__(self):
+        super().__init__()
+        self.is_admin=True
+        Admin.profile_approved=True
+        self.role="admin"
+#=============setters & getters=================
+    def assign_values(self):
+        return super().assign_values()
+        
+        
+        
+        
+        
 class Courses():
     courses_num=0
     labs_num=0
@@ -330,7 +329,6 @@ class Courses():
         Courses.labs_num+=int(self.is_with_lab)
         
         
-    
     def get_course_name(self):
         return self.course_name
     
@@ -380,5 +378,8 @@ class Courses():
     
     def get_assistant_giving_lab(self):
         return self.assistant_giving_lab
+    
+    def create_sections(self):
+        pass
 
 
