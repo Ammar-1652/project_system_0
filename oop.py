@@ -8,19 +8,19 @@ class Person():
         self.role=None
         self.profile_approved=False
         self.is_admin=False
-    def assign_values(self):
-        self.first_name=self.get_first_name()
-        self.middle_name=self.get_middle_name()
-        self.last_name=self.get_last_name()
-        self.personal_id=self.get_personal_id()
-        self.contact_num=self.get_contact_num()
-        self.email=self.get_email()
-        self.date_of_birth=self.get_date_of_birth()
-        #//////////////////////////////////////////////////
-        self.profile_approved=self.get_profile_approved()
-        self.age=self.get_age()
-        self.profile_id=self.get_profile_id()
-        self.role=self.get_role()
+    # def assign_values(self):
+    #     self.first_name=self.get_first_name()
+    #     self.middle_name=self.get_middle_name()
+    #     self.last_name=self.get_last_name()
+    #     self.personal_id=self.get_personal_id()
+    #     self.contact_num=self.get_contact_num()
+    #     self.email=self.get_email()
+    #     self.date_of_birth=self.get_date_of_birth()
+    #     #//////////////////////////////////////////////////
+    #     self.profile_approved=self.get_profile_approved()
+    #     self.age=self.get_age()
+    #     self.profile_id=self.get_profile_id()
+    #     self.role=self.get_role()
     
     
     # def view_profile():
@@ -142,8 +142,8 @@ class Student(Person):
     
     
 #==================setters & getters=======================
-    def assign_values(self):
-        return super().assign_values()
+    # def assign_values(self):
+    #     return super().assign_values()
     
 #==========================================================
     
@@ -181,11 +181,11 @@ class Student(Person):
         return self.level
         
 #========================department======================
-    def set_department(self,department):
+    def set_department(self):
         if self.get_level()==1 or self.get_level()==2:
             self.department="general"
-        else:
-            self.department=department
+        # else:
+        #     self.department=department
 
     def get_department(self):
         return self.department
@@ -201,8 +201,8 @@ class Instructor(Person):
         self.profile_approved=False
         
 #==================setters & getters=======================
-    def assign_values(self):
-        return super().assign_values()
+    # def assign_values(self):
+    #     return super().assign_values()
 #================department==============================
     def set_department(self,department):
         self.department=department
@@ -229,8 +229,8 @@ class Professor(Instructor):
         self.role="professor"
         
 #===============setters and getters========================
-    def assign_values(self):
-        return super().assign_values()
+    # def assign_values(self):
+    #     return super().assign_values()
 #================courses teaching=======================
     def add_courses_teaching(self,course):
         self.courses_teaching.add(course)
@@ -260,8 +260,8 @@ class Professor_asst(Instructor):
         self.role="assistant"
         
     #===============setters and getters========================
-    def assign_values(self):
-        return super().assign_values()
+    # def assign_values(self):
+    #     return super().assign_values()
 #================labs teaching=======================
     def add_labs_giving(self,lab):
         self.labs_giving.add(lab)
@@ -286,8 +286,8 @@ class Admin(Person):
         Admin.profile_approved=True
         self.role="admin"
 #=============setters & getters=================
-    def assign_values(self):
-        return super().assign_values()
+    # def assign_values(self):
+    #     return super().assign_values()
         
         
         
@@ -306,20 +306,13 @@ class Courses():
         self.course_id=Courses.courses_num
         self.lab_id=Courses.courses_num
         
-        
-        
 #=======================setters & getters===================
-
     def get_course_id(self):
         return self.course_id
     
     
     def get_lab_id(self):
         return self.lab_id
-
-
-
-
 #===========================================================
     def add_new_course(self,course_name,course_hours,is_with_lab):
         #here will be a check sentence for is_admin
