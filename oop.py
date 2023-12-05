@@ -3,6 +3,8 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 class Person():
+    used_ids = set()
+
     def __init__(self):
         self.role=None
         self.profile_approved=False
@@ -18,11 +20,9 @@ class Person():
         #//////////////////////////////////////////////////
         self.profile_approved=self.get_profile_approved()
         self.age=self.get_age()
-        self.profile_id=self.get_id()
+        self.profile_id=self.get_profile_id()
         self.role=self.get_role()
     
-    # def generate_id(self):
-    #     pass
     
     # def view_profile():
     #     pass
@@ -60,6 +60,7 @@ class Person():
     #=========personal_id=========
     def set_personal_id(self,personal_id):
         self.personal_id=personal_id
+        self.generate_profile_id()
     
     def get_personal_id(self):
         return self.personal_id
@@ -89,13 +90,23 @@ class Person():
     #===========date_of_birth==========
     def set_date_of_birth(self,date_of_birth:str):
         self.date_of_birth=date_of_birth
+        self.calc_age()
     
     def get_date_of_birth(self):
         return self.date_of_birth
     #======================================
     
     #===========ID====================
-    def get_id(self):
+    
+    def generate_profile_id(self):
+        self.profile_id=self.get_personal_id()[-5:]
+        if self.profile_id in self.used_ids:
+            self.profile_id=self.get_personal_id()[-4:]
+        
+        self.used_ids.add(self.profile_id)
+        return self.profile_id
+    
+    def get_profile_id(self):
         return self.profile_id
     #============age=====================
     def calc_age(self):
@@ -105,8 +116,8 @@ class Person():
         return age
     
     def get_age(self):
-        age=self.calc_age()
-        return age
+        self.age=self.calc_age()
+        return self.age
 
 #================================End of Person class==============================================
 
@@ -122,7 +133,6 @@ class Student(Person):
         self.current_hours=0
         self.max_hours=18
         self.role="student"
-        self.profile_id=Student.student_count
         self.is_admin=False
         self.profile_approved=False
         
@@ -212,6 +222,7 @@ class Instructor(Person):
 class Admin(Person):
     
     def __init__(self):
+        super().__init__()
         self.is_admin=True
         Admin.profile_approved=True
         self.role="admin"
@@ -231,7 +242,6 @@ class Professor(Instructor):
         self.courses_teaching=set()
         self.students_teaching={}
         self.role="professor"
-        self.profile_id=Professor.professor_count
         
 #===============setters and getters========================
     def assign_values(self):
@@ -263,7 +273,6 @@ class Professor_asst(Instructor):
         self.labs_giving=set()
         self.students_teaching={}
         self.role="assistant"
-        self.profile_id=Professor_asst.professor_asst_count
         
     #===============setters and getters========================
     def assign_values(self):
