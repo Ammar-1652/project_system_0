@@ -62,7 +62,7 @@
       <div class="signup-container">
         <i class="fa-solid fa-chalkboard-user"></i>
         <h2>Sign Up for Assistant Professors</h2>
-        <form action="#" method="post">
+        <form action="{{url_for('sign_up_for_ass_prof')}}" method="post">
           <div class="columns">
             <div class="column">
               <input
@@ -132,7 +132,7 @@
                 required
               /><br />
             </div>
-            <div class="upload-file">
+            <!-- <div class="upload-file">
               <label for="profile-picture">Upload Your File</label>
               <input
                 type="file"
@@ -142,7 +142,7 @@
               />
               <small>Please, Upload Your profile (PDF)</small>
             </div>
-          </div>
+          </div> -->
           <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>
           <input type="submit" value="Sign Up" />
         </form>
