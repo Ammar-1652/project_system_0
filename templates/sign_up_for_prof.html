@@ -9,23 +9,30 @@
       rel="stylesheet"
     />
     <!-- CSS File -->
-    <link rel="stylesheet" href="css/sign up for prof.css.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/master.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/sign_up_for_prof.css') }}"
+    />
+    <!-- Normalize File -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
     <!-- Tab Icon -->
-    <link rel="shortcut icon" href="imgs/logo (2).png" type="fci-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
+      type="fci-icon"
+    />
     <!-- Font Awesome Library -->
     <link
       rel="stylesheet"
-      href="css/fontawesome-free-6.5.0-web/css/fontawesome.css"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
     />
-    <link
-      rel="stylesheet"
-      href="css/fontawesome-free-6.5.0-web/css/brands.css"
-    />
-    <link
-      rel="stylesheet"
-      href="css/fontawesome-free-6.5.0-web/css/regular.css"
-    />
-    <link rel="stylesheet" href="css/fontawesome-free-6.5.0-web/css/all.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up For Professors</title>
@@ -34,24 +41,125 @@
     <!-- Start Navbar -->
     <nav>
       <div class="logo">
-        <a href="index.html"><img src="imgs/logo (2).png" alt="" /></a>
+        <a href="{{ url_for('index') }}"
+          ><img
+            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+            alt=""
+        /></a>
       </div>
       <div class="links">
-        <a href="index.html" class="home">HOME</a>
-        <a href="about.html" class="about">ABOUT</a>
-        <a href="contact.html" class="contact">CONTACT</a>
-        <a href="#" class="log-in">LOG IN</a>
-        <a href="#" class="sign-up">SIGN UP</a>
+        <a href="{{ url_for('index') }}" class="home">HOME</a>
+        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
+        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
+        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
+        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
       </div>
     </nav>
     <!-- End Navbar -->
+
+    <!-- Start Sign Up for Profs -->
+    <div class="big-sign-up-container">
+      <div class="signup-container">
+        <i class="fa-solid fa-user-tie"></i>
+        <h2>Sign Up for Professors</h2>
+        <form action="#" method="post">
+          <div class="columns">
+            <div class="column">
+              <input
+                type="text"
+                name="first-name"
+                placeholder="First Name"
+                required
+              /><br />
+              <input
+                type="text"
+                name="last-name"
+                placeholder="Last Name"
+                required
+              /><br />
+              <input
+                type="tel"
+                name="contact-number"
+                placeholder="Contact Number"
+                maxlength="11"
+                minlength="11"
+                required
+              /><br />
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              /><br />
+              <!-- <select name="class_level" required>
+                <option value="" disabled selected>Select Class Level</option>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option></select
+                ><br /> -->
+              <select name="gender" required>
+                <option value="" disabled selected>Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option></select
+              ><br />
+            </div>
+            <div class="column">
+              <input
+                type="text"
+                name="middle-name"
+                placeholder="Middle Name"
+                required
+              /><br />
+              <input
+                type="tel"
+                name="national-id"
+                placeholder="National ID"
+                maxlength="14"
+                minlength="14"
+                required
+              /><br />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+              /><br />
+              <input
+                type="date"
+                name="date-of-birth"
+                placeholder="Date of Birth"
+                required
+              /><br />
+            </div>
+            <div class="upload-file">
+              <label for="profile-picture">Upload Your File</label>
+              <input
+                type="file"
+                name="profile-file"
+                id="profile-file"
+                accept=""
+              />
+              <small>Please, Upload Your profile (PDF)</small>
+            </div>
+          </div>
+          <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>
+          <input type="submit" value="Sign Up" />
+        </form>
+      </div>
+    </div>
+    <!-- End Sign Up for Profs -->
 
     <!-- Start Footer -->
 
     <div class="footer-container">
       <div class="footer-main-container">
         <div class="first-column">
-          <a href="#"><img src="imgs/logo (2).png" alt="" /></a>
+          <a href="{{ url_for('index') }}"
+            ><img
+              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+              alt=""
+          /></a>
           <p>
             Far far away, behind the word mountains, far from the countries
             Vokalia and Consonantia, there live the blind texts.
@@ -71,10 +179,11 @@
         <div class="second-column">
           <h2>Pages</h2>
           <div class="pages-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="#">Log in</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('log_in') }}">Log In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
           </div>
         </div>
         <div class="third-column">
@@ -108,6 +217,7 @@
         </p>
       </div>
     </div>
+
     <!-- End Footer -->
   </body>
 </html>

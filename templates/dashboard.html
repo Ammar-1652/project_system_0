@@ -15,7 +15,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/contact.css') }}"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
     />
     <!-- Normalize File -->
     <link
@@ -35,7 +35,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact Us</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -57,56 +57,86 @@
     </nav>
     <!-- End Navbar -->
 
-    <!-- Start Body -->
+    <!-- Start Dashboard -->
 
-    <div class="main-container">
-      <h1>Contact Us</h1>
-      <p>We're open for any suggestion or just to have a chat</p>
-      <div class="subcontainer">
-        <div class="first-subcontainer">
-          <div class="first-column">
-            <p>
-              <span>MY ADDRESS:</span>
-              El-Gish Street, Kafr Elsheikh, Arab Republic of Egypt.
-            </p>
+    <!-- Start First Column -->
+
+    <div class="big-container">
+      <div class="first-column-container">
+        <div class="info-container">
+          <div class="student-info">
+            <a href="">
+              <i class="fa-solid fa-user-graduate"></i>
+              <p>student information</p>
+            </a>
           </div>
-          <div class="second-column">
-            <p>
-              <span>MY EMAIL:</span>
-              fci@fci.kfs.edu.eg
-            </p>
+          <div class="professor-info">
+            <a href="">
+              <i class="fa-solid fa-user-tie"></i>
+              <p>professors information</p>
+            </a>
           </div>
-          <div class="third-column">
-            <p>
-              <span>MY PHONE:</span>
-              (+20) 1096554062
-            </p>
+          <div class="assistant-profs-info">
+            <a href="">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <p>ass. professors information</p>
+            </a>
+          </div>
+          <div class="courses-info">
+            <a href="">
+              <i class="fa-solid fa-book"></i>
+              <p>courses information</p>
+            </a>
+          </div>
+          <div class="accounts-info">
+            <a href="">
+              <i class="fa-solid fa-chart-pie"></i>
+              <p>accounts information</p>
+            </a>
+          </div>
+          <div class="financial-info">
+            <a href="">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+              <p>financial information</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="edit-container">
+          <div class="setting-container">
+            <a href="">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings</p>
+            </a>
+          </div>
+          <div class="log-out-container">
+            <a href="">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>log out</p>
+            </a>
           </div>
         </div>
       </div>
-      <div class="second-subcontainer">
-        <form action="">
-          <input type="text" placeholder="Name" required class="main-input" />
-          <input type="email" placeholder="Email" required class="main-input" />
-          <input
-            type="text"
-            placeholder="Subject"
-            required
-            class="main-input"
-          />
-          <textarea
-            class="main-input"
-            name="message"
-            id=""
-            placeholder="Create a message here"
-            required
-          ></textarea>
-          <input type="submit" value="send message" class="sumbit-button" />
-        </form>
+
+      <div class="header-container">
+        <input type="text" placeholder="🔍 Search..." class="search-input" />
+
+        <div class="header-end-container">
+          <i class="fa-solid fa-bell"></i>
+          <div class="profile-container">
+            <i class="fa-solid fa-user"></i>
+            <div class="acount-details">
+              <h6>Ammar Walid</h6>
+              <p>Admin</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- End Body -->
+    <!-- End First Column -->
+
+    <!-- End Dashboard -->
 
     <!-- Start Footer -->
 
