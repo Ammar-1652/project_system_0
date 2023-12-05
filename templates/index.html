@@ -9,14 +9,30 @@
       rel="stylesheet"
     />
     <!-- CSS File -->
-    <link rel="stylesheet" href="css/master.css" />
-    <link rel="stylesheet" href="css/index.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/master.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
     <!-- Normalize File -->
-    <link rel="stylesheet" href="css/normalize.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/normalize.css') }}"
+    />
     <!-- Tab Icon -->
-    <link rel="shortcut icon" href="imgs/logo (2).png" type="fci-icon" />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='imgs/logo (2).png') }}"
+      type="fci-icon"
+    />
     <!-- Font Awesome Library -->
-    <link rel="stylesheet" href="css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/all.min.css') }}"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>College Management System</title>
@@ -25,14 +41,18 @@
     <!-- Start Navbar -->
     <nav>
       <div class="logo">
-        <a href="index.html"><img src="imgs/logo (2).png" alt="" /></a>
+        <a href="{{ url_for('index') }}"
+          ><img
+            src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+            alt=""
+        /></a>
       </div>
       <div class="links">
-        <a href="index.html" class="home">HOME</a>
-        <a href="about.html" class="about">ABOUT</a>
-        <a href="contact.html" class="contact">CONTACT</a>
-        <a href="log_in.html" class="log-in">LOG IN</a>
-        <a href="sign_up.html" class="sign-up">SIGN UP</a>
+        <a href="{{ url_for('index') }}" class="home">HOME</a>
+        <a href="{{ url_for('about') }}" class="about">ABOUT</a>
+        <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
+        <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
+        <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
       </div>
     </nav>
     <!-- End Navbar -->
@@ -48,10 +68,9 @@
         <h4>Go on to Know More Details</h4>
       </div>
       <div class="second-subcontainer">
-        <img src="imgs/9.jpg" alt="" />
+        <img src="{{ url_for('static', filename='imgs/9.jpg') }}" alt="" />
       </div>
     </div>
-
     <!-- End Body -->
 
     <!-- Start Activities -->
@@ -60,7 +79,10 @@
       <div class="best-student">
         <div class="first-container">
           <div class="photo-background">
-            <img alt="" src="imgs/events.jpg" />
+            <img
+              alt=""
+              src="{{ url_for('static', filename='imgs/events.jpg') }}"
+            />
           </div>
           <div class="paragraph-events">
             <h4>Events</h4>
@@ -91,12 +113,30 @@
       <div class="our-student">
         <h3>Our Students</h3>
         <div class="our-student-photos">
-          <img src="imgs/our student.jpg" alt="" />
-          <img src="imgs/our student 2.jpg" alt="" />
-          <img src="imgs/our student 3.jpg" alt="" />
-          <img src="imgs/our student 4.jpg" alt="" />
-          <img src="imgs/our student 5.jpg" alt="" />
-          <img src="imgs/our student 6.jpg" alt="" />
+          <img
+            src="{{ url_for('static', filename='imgs/our student.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 2.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 3.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 4.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 5.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 6.jpg') }}"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -107,7 +147,11 @@
     <div class="footer-container">
       <div class="footer-main-container">
         <div class="first-column">
-          <a href="#"><img src="imgs/logo (2).png" alt="" /></a>
+          <a href="{{ url_for('index') }}"
+            ><img
+              src="{{ url_for('static', filename='imgs/logo (2).png') }}"
+              alt=""
+          /></a>
           <p>
             Far far away, behind the word mountains, far from the countries
             Vokalia and Consonantia, there live the blind texts.
@@ -127,11 +171,11 @@
         <div class="second-column">
           <h2>Pages</h2>
           <div class="pages-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="log_in.html">Log In</a>
-            <a href="sign_up.html">Sign Up</a>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+            <a href="{{ url_for('log_in') }}">Log In</a>
+            <a href="{{ url_for('sign_up') }}">Sign Up</a>
           </div>
         </div>
         <div class="third-column">
