@@ -148,7 +148,7 @@ def log_in():
                     return "Invalid email or password"
 
                 # Return welcome message for assistant
-                return "Welcome assistant "
+                return render_template("dashboard.html")
             else:
                 # Return welcome message for professor
                 return "Welcome professor "
@@ -169,7 +169,7 @@ def sign_up():
 def sign_up_for_students():
     s = Student()
     if request.method == 'POST':
-        s.data = request.form
+        s.data =Student(request.form) 
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
         cursor.execute('''
@@ -179,7 +179,7 @@ def sign_up_for_students():
                 date_of_birth, gender, class_level, password
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
-            s.data['first-name'],
+            s.get_first_name(['first-name']),
             s.data['middle-name'],
             s.data['last-name'],
             s.data['contact-number'],
@@ -255,7 +255,35 @@ def sign_up_for_prof():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    # Fetch data from the students table
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM students')
+    students_data = cursor.fetchall()
+    connection.close()
+
+    # Fetch data from the profs table
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM profs')
+    professors_data = cursor.fetchall()
+    connection.close()
+
+    # Fetch data from the assistant table
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute('SELECT * FROM assistant')
+    assistants_data = cursor.fetchall()
+    connection.close()
+
+    # Create dictionaries for each type of user
+    students = [{'id': student[0], 'first_name': student[1], 'last_name': student[3], 'email': student[5]} for student in students_data]
+    professors = [{'id': professor[0], 'first_name': professor[1], 'last_name': professor[3], 'email': professor[5]} for professor in professors_data]
+    assistants = [{'id': assistant[0], 'first_name': assistant[1], 'last_name': assistant[3], 'email': assistant[5]} for assistant in assistants_data]
+
+    return render_template("dashboard.html", students=students, professors=professors, assistants=assistants)
+
+    
 
 
 if __name__ == "__main__":
