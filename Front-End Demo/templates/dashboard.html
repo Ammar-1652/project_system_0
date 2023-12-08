@@ -15,7 +15,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/log_in.css') }}"
+      href="{{ url_for('static', filename='css/dashboard.css') }}"
     />
     <!-- Normalize File -->
     <link
@@ -35,7 +35,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
+    <title>Dashboard</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -56,31 +56,88 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Start Log in -->
-    <div class="big-log-in-container">
-      <div class="login-container">
-        <i class="fa-solid fa-circle-user"></i>
-        <h2>Log in</h2>
-        <form action="{{ url_for('student_dashboard') }}" method="post">
-          <input type="email" name="email" placeholder="Email" required /><br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          /><br />
-          <div class="remember-me">
-            <input type="checkbox" id="remeber" />
-            <label for="remeber">Remember Me</label>
+
+    <!-- Start Dashboard -->
+
+    <!-- Start First Column -->
+
+    <div class="big-container">
+      <div class="first-column-container">
+        <div class="info-container">
+          <div class="student-info">
+            <a href="">
+              <i class="fa-solid fa-user-graduate"></i>
+              <p>student information</p>
+            </a>
           </div>
-          <div class="have-an-account">
-            <a href="{{ url_for('sign_up') }}">Create a New Account</a>
+          <div class="professor-info">
+            <a href="">
+              <i class="fa-solid fa-user-tie"></i>
+              <p>professors information</p>
+            </a>
           </div>
-          <input type="submit" value="Login" />
-        </form>
+          <div class="assistant-profs-info">
+            <a href="">
+              <i class="fa-solid fa-chalkboard-user"></i>
+              <p>ass. professors information</p>
+            </a>
+          </div>
+          <div class="courses-info">
+            <a href="">
+              <i class="fa-solid fa-book"></i>
+              <p>courses information</p>
+            </a>
+          </div>
+          <div class="accounts-info">
+            <a href="">
+              <i class="fa-solid fa-chart-pie"></i>
+              <p>accounts information</p>
+            </a>
+          </div>
+          <div class="financial-info">
+            <a href="">
+              <i class="fa-solid fa-money-bill-transfer"></i>
+              <p>financial information</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="edit-container">
+          <div class="setting-container">
+            <a href="">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings</p>
+            </a>
+          </div>
+          <div class="log-out-container">
+            <a href="">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>log out</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-container">
+        <input type="text" placeholder="🔍 Search..." class="search-input" />
+
+        <div class="header-end-container">
+          <i class="fa-solid fa-bell"></i>
+          <div class="profile-container">
+            <i class="fa-solid fa-user"></i>
+            <div class="acount-details">
+              <h6>Ammar Walid</h6>
+              <p>Admin</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <!-- End Log in -->
+
+    <!-- End First Column -->
+
+    <!-- End Dashboard -->
+
     <!-- Start Footer -->
 
     <div class="footer-container">
