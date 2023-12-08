@@ -169,7 +169,7 @@ def sign_up():
 def sign_up_for_students():
     s = Student()
     if request.method == 'POST':
-        s.data =Student(request.form) 
+        s.data =request.form 
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
         cursor.execute('''
@@ -179,7 +179,7 @@ def sign_up_for_students():
                 date_of_birth, gender, class_level, password
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ''', (
-            s.get_first_name(['first-name']),
+            s.data['first-name'],
             s.data['middle-name'],
             s.data['last-name'],
             s.data['contact-number'],
