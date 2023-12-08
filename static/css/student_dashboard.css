@@ -53,7 +53,7 @@ body {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  color: var(--second-color);
+  color: var(--fifth-color);
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;

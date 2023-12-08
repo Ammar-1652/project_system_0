@@ -15,7 +15,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/log_in.css') }}"
+      href="{{ url_for('static', filename='css/index.css') }}"
     />
     <!-- Normalize File -->
     <link
@@ -35,7 +35,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
+    <title>College Management System</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -53,34 +53,96 @@
         <a href="{{ url_for('contact') }}" class="contact">CONTACT</a>
         <a href="{{ url_for('log_in') }}" class="log-in">LOG IN</a>
         <a href="{{ url_for('sign_up') }}" class="sign-up">SIGN UP</a>
+
       </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Start Log in -->
-    <div class="big-log-in-container">
-      <div class="login-container">
-        <i class="fa-solid fa-circle-user"></i>
-        <h2>Log in</h2>
-        <form action="{{ url_for('student_dashboard') }}" method="post">
-          <input type="email" name="email" placeholder="Email" required /><br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          /><br />
-          <div class="remember-me">
-            <input type="checkbox" id="remeber" />
-            <label for="remeber">Remember Me</label>
-          </div>
-          <div class="have-an-account">
-            <a href="{{ url_for('sign_up') }}">Create a New Account</a>
-          </div>
-          <input type="submit" value="Login" />
-        </form>
+
+    <!-- Start Body -->
+    <div class="container-photo">
+      <div class="first-subcontainer">
+        <div class="info">
+          <h3 class="faculty">Faculty of</h3>
+          <h1 class="college">Computer & Information</h1>
+          <h2 class="unversity">Kafr Elsheikh University</h2>
+        </div>
+        <h4>Go on to Know More Details</h4>
+      </div>
+      <div class="second-subcontainer">
+        <img src="{{ url_for('static', filename='imgs/9.jpg') }}" alt="" />
       </div>
     </div>
-    <!-- End Log in -->
+    <!-- End Body -->
+
+    <!-- Start Activities -->
+    <div class="activities-container">
+      <h3>Our Activities</h3>
+      <div class="best-student">
+        <div class="first-container">
+          <div class="photo-background">
+            <img
+              alt=""
+              src="{{ url_for('static', filename='imgs/events.jpg') }}"
+            />
+          </div>
+          <div class="paragraph-events">
+            <h4>Events</h4>
+            <p>
+              The College of Computers and Information announces the
+              establishment of: <br />third forum to prepare students of the
+              College of Computers and Information for the labor market
+              <br />This will be at 10 o’clock on Monday 11/13 in the seminar
+              hall at the college <br />With the participation of: <br />-
+              Microsoft Corporation <br />- Digital World Magazine <br />-
+              Information Technology Institute (ITI). <br />- ITIDA Center for
+              Innovation and Entrepreneurship <br />- My services company
+              <br />All students are waiting to attend and benefit from the
+              present companies and opportunities within the forum
+            </p>
+            <div class="see-more-button">
+              <a href="#">See More Activities</a>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="second-container">
+          <img alt="" src="imgs/events 2 .jpg" />
+          <img alt="" src="imgs/events 3.jpg" />
+          <img alt="" src="imgs/events 4.jpg" />
+          <img alt="" src="imgs/events 5.jpg" />
+        </div> -->
+      </div>
+      <div class="our-student">
+        <h3>Our Students</h3>
+        <div class="our-student-photos">
+          <img
+            src="{{ url_for('static', filename='imgs/our student.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 2.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 3.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 4.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 5.jpg') }}"
+            alt=""
+          />
+          <img
+            src="{{ url_for('static', filename='imgs/our student 6.jpg') }}"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+    <!-- End Activities -->
+
     <!-- Start Footer -->
 
     <div class="footer-container">

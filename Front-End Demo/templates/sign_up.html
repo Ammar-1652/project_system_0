@@ -15,7 +15,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/log_in.css') }}"
+      href="{{ url_for('static', filename='css/sign_up.css') }}"
     />
     <!-- Normalize File -->
     <link
@@ -35,7 +35,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
+    <title>Sign Up</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -56,31 +56,45 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Start Log in -->
-    <div class="big-log-in-container">
-      <div class="login-container">
-        <i class="fa-solid fa-circle-user"></i>
-        <h2>Log in</h2>
-        <form action="{{ url_for('student_dashboard') }}" method="post">
-          <input type="email" name="email" placeholder="Email" required /><br />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          /><br />
-          <div class="remember-me">
-            <input type="checkbox" id="remeber" />
-            <label for="remeber">Remember Me</label>
+
+    <!-- Start Sign Up -->
+
+    <div class="big-container">
+      <div class="container">
+        <h2>Please Select Type of Sign Up</h2>
+        <div class="signup-container">
+          <div class="prof-container">
+            <a href="{{ url_for('sign_up_for_prof') }}">
+              <button class="prof">
+                <i class="fa-solid fa-user-tie"></i>
+                <h6>Professor</h6>
+              </button>
+            </a>
           </div>
-          <div class="have-an-account">
-            <a href="{{ url_for('sign_up') }}">Create a New Account</a>
+          <div class="assoc-prof-container">
+            <a href="{{ url_for('sign_up_for_ass_prof') }}">
+              <button class="assoc-prof">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                <h6>Prof. Assistant</h6>
+              </button>
+            </a>
           </div>
-          <input type="submit" value="Login" />
-        </form>
+          <div class="student-container">
+            <a href="{{ url_for('sign_up_for_students') }}">
+              <button class="student">
+                <i class="fa-solid fa-user-graduate"></i>
+                <h6>Student</h6>
+              </button>
+            </a>
+          </div>
+          <br />
+        </div>
+        <a href="{{ url_for('log_in') }}">Or You Are Already Have Account</a>
       </div>
     </div>
-    <!-- End Log in -->
+
+    <!-- End Sign Up -->
+
     <!-- Start Footer -->
 
     <div class="footer-container">

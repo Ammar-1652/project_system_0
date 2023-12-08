@@ -1,10 +1,14 @@
 # app.py
-from flask import Flask, render_template, request,redirect
+from flask import Flask, render_template, request, redirect
 import sqlite3
-from oop import Student, Professor,Professor_asst  # Assuming you have a class Professor in oop module
+from oop import (
+    Student,
+    Professor,
+    Professor_asst,
+)  # Assuming you have a class Professor in oop module
 
 app = Flask(__name__)
-DATABASE = 'database.db'
+DATABASE = "database.db"
 
 import sqlite3
 
@@ -13,9 +17,14 @@ DATABASE = "All_Tables.db"
 def create_tables():
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
+<<<<<<< HEAD
 
     # Students table
     cursor.execute('''
+=======
+    cursor.execute(
+        """
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
         CREATE TABLE IF NOT EXISTS students (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name TEXT NOT NULL,
@@ -29,10 +38,24 @@ def create_tables():
             class_level TEXT NOT NULL,
             password TEXT NOT NULL
         )
+<<<<<<< HEAD
     ''')
 
     # Professors (profs) table
     cursor.execute('''
+=======
+    """
+    )
+    connection.commit()
+    connection.close()
+
+
+def create_table2():
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute(
+        """
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
         CREATE TABLE IF NOT EXISTS profs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name TEXT NOT NULL,
@@ -45,10 +68,24 @@ def create_tables():
             gender TEXT NOT NULL,
             password TEXT NOT NULL
         )
+<<<<<<< HEAD
     ''')
 
     # Assistants table
     cursor.execute('''
+=======
+    """
+    )
+    connection.commit()
+    connection.close()
+
+
+def create_table3():
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+    cursor.execute(
+        """
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
         CREATE TABLE IF NOT EXISTS assistant (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name TEXT NOT NULL,
@@ -61,12 +98,30 @@ def create_tables():
             gender TEXT NOT NULL,
             password TEXT NOT NULL
         )
+<<<<<<< HEAD
     ''')
 
     # Courses table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS courses(
             id INTEGER PRIMARY KEY ,
+=======
+    """
+    )
+    connection.commit()
+    connection.close()
+
+
+def create_table_courses():
+    connection = sqlite3.connect(DATABASE)
+    cursor = connection.cursor()
+
+    # Example table creation
+    cursor.execute(
+        """
+        CREATE TABLE IF NOT EXISTS courses (
+            id INTEGER PRIMARY KEY,
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
             course_name TEXT,
             instructor_id INTEGER,
             start_date DATE,
@@ -95,15 +150,21 @@ def create_tables():
             FOREIGN KEY (assistant_id) REFERENCES assistant(id),
             FOREIGN KEY (course_id) REFERENCES courses(id)
         )
-    ''')
+    """
+    )
 
     connection.commit()
     connection.close()
 
 
+<<<<<<< HEAD
 create_tables()
-
-
+=======
+create_table()
+create_table2()
+create_table3()
+create_table_courses()
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
 
 
 @app.route("/")
@@ -121,16 +182,28 @@ def contact():
     return render_template("contact.html")
 
 
+<<<<<<< HEAD
 @app.route("/log_in", methods=['GET', 'POST'])
+=======
+@app.route("/log_in")
+# ... (previous code)
+
+# ... (previous code)
+
+
+@app.route("/log_in", methods=["GET", "POST"])
+>>>>>>> ad2277672680321862d6ca200e19d9c55c091d8d
 def log_in():
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
 
         # Check if the user exists in the students table
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
-        cursor.execute('SELECT * FROM students WHERE email=? AND password=?', (email, password))
+        cursor.execute(
+            "SELECT * FROM students WHERE email=? AND password=?", (email, password)
+        )
         student = cursor.fetchone()
         connection.close()
 
@@ -138,7 +211,9 @@ def log_in():
         if not student:
             connection = sqlite3.connect(DATABASE)
             cursor = connection.cursor()
-            cursor.execute('SELECT * FROM profs WHERE email=? AND password=?', (email, password))
+            cursor.execute(
+                "SELECT * FROM profs WHERE email=? AND password=?", (email, password)
+            )
             professor = cursor.fetchone()
             connection.close()
 
@@ -146,7 +221,10 @@ def log_in():
             if not professor:
                 connection = sqlite3.connect(DATABASE)
                 cursor = connection.cursor()
-                cursor.execute('SELECT * FROM assistant WHERE email=? AND password=?', (email, password))
+                cursor.execute(
+                    "SELECT * FROM assistant WHERE email=? AND password=?",
+                    (email, password),
+                )
                 assistant = cursor.fetchone()
                 connection.close()
 
@@ -165,26 +243,54 @@ def log_in():
 
     return render_template("log_in.html")
 
+
 # ... (remaining code)
+
 
 @app.route("/sign_up")
 def sign_up():
     return render_template("sign_up.html")
 
 
-@app.route("/sign_up_for_students", methods=['GET', 'POST'])
+@app.route("/sign_up_for_students", methods=["GET", "POST"])
 def sign_up_for_students():
     s = Student()
+<<<<<<< HEAD
+    if request.method == "POST":
+        s.data = request.form
+=======
     if request.method == 'POST':
+<<<<<<< HEAD
+        s.data =Student(request.form) 
+>>>>>>> 545422943b3f7047cb92ba27f79cf6e12fa5018f
+=======
         s.data =request.form 
+>>>>>>> 44ead9e63605f070573ce3f44f4ea54455f7875e
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
-        cursor.execute('''
+        cursor.execute(
+            """
             INSERT INTO students (
                 first_name, middle_name, last_name,
                 contact_number, national_id, email,
                 date_of_birth, gender, class_level, password
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+<<<<<<< HEAD
+        """,
+            (
+                s.data["first-name"],
+                s.data["middle-name"],
+                s.data["last-name"],
+                s.data["contact-number"],
+                s.data["national-id"],
+                s.data["email"],
+                s.data["date-of-birth"],
+                s.data["gender"],
+                s.data["class_level"],
+                s.data["password"],
+            ),
+        )
+=======
         ''', (
             s.data['first-name'],
             s.data['middle-name'],
@@ -197,64 +303,71 @@ def sign_up_for_students():
             s.data['class_level'],
             s.data['password']
         ))
+>>>>>>> 545422943b3f7047cb92ba27f79cf6e12fa5018f
         connection.commit()
         connection.close()
     return render_template("sign_up_for_students.html")
 
 
-@app.route("/sign_up_for_ass_prof",methods=['GET', 'POST'])
+@app.route("/sign_up_for_ass_prof", methods=["GET", "POST"])
 def sign_up_for_ass_prof():
-    a=Professor_asst()
-    if request.method == 'POST':
+    a = Professor_asst()
+    if request.method == "POST":
         a.data = request.form
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
-        cursor.execute('''
+        cursor.execute(
+            """
             INSERT INTO assistant (
                 first_name, middle_name, last_name,
                 contact_number, national_id, email,
                 date_of_birth, gender, password
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            a.data['first-name'],
-            a.data['middle-name'],
-            a.data['last-name'],
-            a.data['contact-number'],
-            a.data['national-id'],
-            a.data['email'],
-            a.data['date-of-birth'],
-            a.data['gender'],
-            a.data['password']
-        ))
+        """,
+            (
+                a.data["first-name"],
+                a.data["middle-name"],
+                a.data["last-name"],
+                a.data["contact-number"],
+                a.data["national-id"],
+                a.data["email"],
+                a.data["date-of-birth"],
+                a.data["gender"],
+                a.data["password"],
+            ),
+        )
         connection.commit()
         connection.close()
     return render_template("sign_up_for_ass_prof.html")
 
 
-@app.route("/sign_up_for_prof", methods=['GET', 'POST'])
+@app.route("/sign_up_for_prof", methods=["GET", "POST"])
 def sign_up_for_prof():
     p = Professor()
-    if request.method == 'POST':
+    if request.method == "POST":
         p.data = request.form
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
-        cursor.execute('''
+        cursor.execute(
+            """
             INSERT INTO profs (
                 first_name, middle_name, last_name,
                 contact_number, national_id, email,
                 date_of_birth, gender, password
             ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ''', (
-            p.data['first-name'],
-            p.data['middle-name'],
-            p.data['last-name'],
-            p.data['contact-number'],
-            p.data['national-id'],
-            p.data['email'],
-            p.data['date-of-birth'],
-            p.data['gender'],
-            p.data['password']
-        ))
+        """,
+            (
+                p.data["first-name"],
+                p.data["middle-name"],
+                p.data["last-name"],
+                p.data["contact-number"],
+                p.data["national-id"],
+                p.data["email"],
+                p.data["date-of-birth"],
+                p.data["gender"],
+                p.data["password"],
+            ),
+        )
         connection.commit()
         connection.close()
     return render_template("sign_up_for_prof.html")
@@ -291,6 +404,26 @@ def dashboard():
     return render_template("dashboard.html", students=students, professors=professors, assistants=assistants)
 
     
+
+
+@app.route("/student_dashboard")
+def student_dashboard():
+    return render_template("student_dashboard.html")
+
+
+@app.route("/student_dashboard/assignment_for_student")
+def assignment_for_student():
+    return render_template("assignment_for_student.html")
+
+
+@app.route("/student_dashboard/courses_for_student")
+def courses_for_student():
+    return render_template("courses_for_student.html")
+
+
+@app.route("/student_dashboard/timetable_for_student")
+def timetable_for_student():
+    return render_template("timetable_for_student.html")
 
 
 if __name__ == "__main__":

@@ -15,7 +15,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/log_in.css') }}"
+      href="{{ url_for('static', filename='css/assignment_for_student.css') }}"
     />
     <!-- Normalize File -->
     <link
@@ -35,7 +35,7 @@
     />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in</title>
+    <title>Assignments for Students</title>
   </head>
   <body>
     <!-- Start Navbar -->
@@ -56,31 +56,107 @@
       </div>
     </nav>
     <!-- End Navbar -->
-    <!-- Start Log in -->
-    <div class="big-log-in-container">
-      <div class="login-container">
-        <i class="fa-solid fa-circle-user"></i>
-        <h2>Log in</h2>
-        <form action="{{ url_for('student_dashboard') }}" method="post">
-          <input type="email" name="email" placeholder="Email" required /><br />
+
+    <!-- Start Dashboard -->
+
+    <!-- Start First Column -->
+
+    <div class="big-container">
+      <div class="first-column-container">
+        <div class="info-container">
+          <div class="courses">
+            <a href="{{ url_for('courses_for_student') }}" class="courses-link">
+              <i class="fa-solid fa-book"></i>
+              <p>courses</p>
+            </a>
+          </div>
+          <div class="timetable">
+            <a
+              href="{{ url_for('timetable_for_student') }}"
+              class="timetable-link"
+            >
+              <i class="fa-regular fa-calendar-days"></i>
+              <p>time table</p>
+            </a>
+          </div>
+          <div class="assignment-container">
+            <a
+              href="{{ url_for('assignment_for_student') }}"
+              class="assignment-link"
+            >
+              <i class="fa-solid fa-list-check"></i>
+              <p>assignments</p>
+            </a>
+          </div>
+        </div>
+
+        <div class="edit-container">
+          <div class="setting-container">
+            <a href="">
+              <i class="fa-solid fa-gear"></i>
+              <p>Settings</p>
+            </a>
+          </div>
+          <div class="log-out-container">
+            <a href="{{ url_for('log_in') }}">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <p>log out</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-container">
+        <div class="header-container">
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          /><br />
-          <div class="remember-me">
-            <input type="checkbox" id="remeber" />
-            <label for="remeber">Remember Me</label>
+            type="text"
+            placeholder="&#xf00c; Search..."
+            class="search-input"
+          />
+
+          <div class="header-end-container">
+            <i class="fa-solid fa-bell"></i>
+            <div class="profile-container">
+              <i class="fa-solid fa-user"></i>
+              <div class="acount-details">
+                <h6>student name</h6>
+                <p>his level</p>
+              </div>
+            </div>
           </div>
-          <div class="have-an-account">
-            <a href="{{ url_for('sign_up') }}">Create a New Account</a>
+        </div>
+
+        <div class="container">
+          <div class="assignment">
+            <h1>Welcome to the Assignments Page</h1>
+            <div class="welcome-message">
+              <h2>Instructions:</h2>
+              <p>Download your assigned task below.</p>
+            </div>
+            <div class="assignment-details">
+              <a href="assignment-link" class="download-button" download
+                >Download the Task</a
+              >
+              <p class="warning">
+                <span class="warning-icon"></span>
+                <span class="warning-message"
+                  >The deadline is [Specify the due date here].</span
+                >
+              </p>
+              <p>
+                If you have any questions, please contact us via email at:
+                <a href="mailto:email@example.com">email@example.com</a>
+              </p>
+            </div>
           </div>
-          <input type="submit" value="Login" />
-        </form>
+        </div>
       </div>
     </div>
-    <!-- End Log in -->
+
+    <!-- End First Column -->
+
+    <!-- End Dashboard -->
+
     <!-- Start Footer -->
 
     <div class="footer-container">
