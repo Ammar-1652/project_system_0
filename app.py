@@ -197,8 +197,12 @@ def sign_up_for_students():
         s.data = request.form
 =======
     if request.method == 'POST':
+<<<<<<< HEAD
         s.data =Student(request.form) 
 >>>>>>> 545422943b3f7047cb92ba27f79cf6e12fa5018f
+=======
+        s.data =request.form 
+>>>>>>> 44ead9e63605f070573ce3f44f4ea54455f7875e
         connection = sqlite3.connect(DATABASE)
         cursor = connection.cursor()
         cursor.execute(
@@ -225,7 +229,7 @@ def sign_up_for_students():
         )
 =======
         ''', (
-            s.get_first_name(['first-name']),
+            s.data['first-name'],
             s.data['middle-name'],
             s.data['last-name'],
             s.data['contact-number'],
