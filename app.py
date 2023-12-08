@@ -6,10 +6,15 @@ from oop import Student, Professor,Professor_asst  # Assuming you have a class P
 app = Flask(__name__)
 DATABASE = 'database.db'
 
+import sqlite3
 
-def create_table():
+DATABASE = "All_Tables.db"
+
+def create_tables():
     connection = sqlite3.connect(DATABASE)
     cursor = connection.cursor()
+
+    # Students table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS students (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,13 +30,8 @@ def create_table():
             password TEXT NOT NULL
         )
     ''')
-    connection.commit()
-    connection.close()
 
-
-def create_table2():
-    connection = sqlite3.connect(DATABASE)
-    cursor = connection.cursor()
+    # Professors (profs) table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS profs (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,11 +46,8 @@ def create_table2():
             password TEXT NOT NULL
         )
     ''')
-    connection.commit()
-    connection.close()
-def create_table3():
-    connection = sqlite3.connect(DATABASE)
-    cursor = connection.cursor()
+
+    # Assistants table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS assistant (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -65,31 +62,46 @@ def create_table3():
             password TEXT NOT NULL
         )
     ''')
-    connection.commit()
-    connection.close()
 
-def create_table_courses():
-    connection = sqlite3.connect(DATABASE)
-    cursor = connection.cursor()
-
-    # Example table creation
+    # Courses table
     cursor.execute('''
-        CREATE TABLE IF NOT EXISTS courses (
-            id INTEGER PRIMARY KEY,
+        CREATE TABLE IF NOT EXISTS courses(
+            id INTEGER PRIMARY KEY ,
             course_name TEXT,
-            instructor TEXT,
+            instructor_id INTEGER,
             start_date DATE,
-            end_date DATE
+            end_date DATE,
+            FOREIGN KEY (instructor_id) REFERENCES profs(id)
+        )
+    ''')
+
+    # Enrollments table (to link students with courses)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS enrollments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            student_id INTEGER,
+            course_id INTEGER,
+            FOREIGN KEY (student_id) REFERENCES students(id),
+            FOREIGN KEY (course_id) REFERENCES courses(id)
+        )
+    ''')
+
+    # AssistantAssignments table (to link assistants with courses)
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS assistant_assignments (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            assistant_id INTEGER,
+            course_id INTEGER,
+            FOREIGN KEY (assistant_id) REFERENCES assistant(id),
+            FOREIGN KEY (course_id) REFERENCES courses(id)
         )
     ''')
 
     connection.commit()
     connection.close()
 
-create_table()
-create_table2()
-create_table3()
-create_table_courses()
+
+create_tables()
 
 
 
@@ -108,11 +120,6 @@ def about():
 def contact():
     return render_template("contact.html")
 
-
-@app.route("/log_in")
-# ... (previous code)
-
-# ... (previous code)
 
 @app.route("/log_in", methods=['GET', 'POST'])
 def log_in():
